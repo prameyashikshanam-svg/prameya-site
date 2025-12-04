@@ -49,14 +49,6 @@ YouTube, Facebook, Spotify, etc. </p>
 society through education and to help the underprivileged and needy people in
 society.  </p>
               </li>
-              <li>
-                <strong>Life Skills Workshops</strong>
-                <p>Practical sessions on communication, teamwork and problem solving.</p>
-              </li>
-              <li>
-                <strong>Digital Learning</strong>
-                <p>Blended content for classroom and remote learners with assessments.</p>
-              </li>
             </ul>
           </div>
         </section>

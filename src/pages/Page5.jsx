@@ -31,7 +31,7 @@ export default function Page5() {
                 </div>
               </div> */}
 
-              <h2 className="subhead">OUR VISION, PASSION &amp; MISSION:</h2>
+              <h2 className="subhead">OUR PASSION &amp; MISSION:</h2>
               <p className="body-text">
                 Prameya Shikshanam is a non-profit organisation started by a few enthusiastic
                 freelancers who are extremely service-oriented, voluntarily contributing towards

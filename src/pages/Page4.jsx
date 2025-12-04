@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React from "react";
 import Header from "../components/Header";
 
 export default function Page4() {
@@ -15,123 +15,117 @@ export default function Page4() {
     new URL("../assets/Logos/10.Updated-latest.png", import.meta.url).href,
   ];
 
-  // Info content for each image (kept exactly from your comment block)
-  const info = [
-`1) Ethical and Moral Values
-
-a)  Hard work and commitment
-b)  Active listening with open mind
-c)  Ahimsa
-d)  Aparigraha
-e)  Compassion
-f)  Contentment
-g)  Courage
-h)  Courtesy
-i)  Creative Imagination
-j)  Dignity
-k)  Empathy 
-l)  Forgiveness
-m)  Gratitude
-n)  Honesty/Sincerity
-o)  Humility
-p)  Integrity
-q)  Perseverance
-r)  Resilience
-s)  Sacrifice
-t)  Helping Nature/ Spirit of Seva
-u)  Tolerance
-v)  Truth
-w)  Positive Thinking
-x)  Acceptance`,
-
-`2) Bhagavad Gita Values
-
-a)  Nishkama Karma
-b)  Karma theory`,
-
-`3) Stories from Bharatiya epics
-
-a)  Mahabharata
-b)  Ramayana
-c)  Bhagavatam
-d) Upanishads`,
-
-`4) Social Values
-
-a)  Sharing is Caring
-b)  Peace
-c)  Respectful conversation
-d)  Freedom comes with Responsibility
-e)  Sensitivity
-f)  Sustainability
-g)  Good Company / Satsang
-h)  Teamwork
-i)  Social Responsibility 
-j)  Respecting All Philosophies
-k)  Respect for Public Property: Swachh Bharat / Clean India`,
-
-`5) Democratic Values
-
-a)  Commitment to Liberty and Freedom
-b)  Democratic Outlook, Democratic Spirit
-c)  Equality
-d)  Fraternal Spirit
-e)  Social Literacy
-f)  Gender Equality
-g)  Gender Sensitivity
-h)  Plurality and Inclusion
-i)  Justice and Fairness`,
-
-`6) Scientific Values
-
-a)  Rational Thinking
-b)  Scientific Temper`,
-
-`7) Fighting Hurdles
-
-a)  Fighting Desires / Kama
-b)  Fighting Anger / Krodha
-c)  Fighting Greed / Lobha
-d)  Fighting Attachment / Moha
-e)  Fighting Pride / Mada
-f)  Fighting Jealousy / Matsarya`,
-
-`8) Respecting Values
-
-a)  Respecting Mother
-b)  Respecting Father
-c)  Respecting Teacher
-d)  Respecting Guests
-e)  Respecting Divyangas
-f)  Respecting Elders/All
-g)Respecting Self`,
-
-`9) Respecting Nature
-
-a)  Respect Soil
-b)  Respect Rivers
-c)  Respect Trees`,
-
-`10) Pride Of Bharat
-
-a)  Respecting the Indian Army
-b)  Respecting Monuments/Religious Places
-c)  Patriotism
-d)  Pride in India: IKS
-e)  Rootedness/Respect culture festivals`,
-
+  // Same content as before, but converted to title + list items, without numbers/letters
+  const infoData = [
+    {
+      title: "Ethical and Moral Values",
+      items: [
+        "Hard work and commitment",
+        "Active listening with open mind",
+        "Ahimsa",
+        "Aparigraha",
+        "Compassion",
+        "Contentment",
+        "Courage",
+        "Courtesy",
+        "Creative Imagination",
+        "Dignity",
+        "Empathy",
+        "Forgiveness",
+        "Gratitude",
+        "Honesty/Sincerity",
+        "Humility",
+        "Integrity",
+        "Perseverance",
+        "Resilience",
+        "Sacrifice",
+        "Helping Nature/ Spirit of Seva",
+        "Tolerance",
+        "Truth",
+        "Positive Thinking",
+        "Acceptance",
+      ],
+    },
+    {
+      title: "Bhagavad Gita Values",
+      items: ["Nishkama Karma", "Karma theory"],
+    },
+    {
+      title: "Stories from Bharatiya epics",
+      items: ["Mahabharata", "Ramayana", "Bhagavatam", "Upanishads"],
+    },
+    {
+      title: "Social Values",
+      items: [
+        "Sharing is Caring",
+        "Peace",
+        "Respectful conversation",
+        "Freedom comes with Responsibility",
+        "Sensitivity",
+        "Sustainability",
+        "Good Company / Satsang",
+        "Teamwork",
+        "Social Responsibility",
+        "Respecting All Philosophies",
+        "Respect for Public Property: Swachh Bharat / Clean India",
+      ],
+    },
+    {
+      title: "Democratic Values",
+      items: [
+        "Commitment to Liberty and Freedom",
+        "Democratic Outlook, Democratic Spirit",
+        "Equality",
+        "Fraternal Spirit",
+        "Social Literacy",
+        "Gender Equality",
+        "Gender Sensitivity",
+        "Plurality and Inclusion",
+        "Justice and Fairness",
+      ],
+    },
+    {
+      title: "Scientific Values",
+      items: ["Rational Thinking", "Scientific Temper"],
+    },
+    {
+      title: "Fighting Hurdles",
+      items: [
+        "Fighting Desires / Kama",
+        "Fighting Anger / Krodha",
+        "Fighting Greed / Lobha",
+        "Fighting Attachment / Moha",
+        "Fighting Pride / Mada",
+        "Fighting Jealousy / Matsarya",
+      ],
+    },
+    {
+      title: "Respecting Values",
+      items: [
+        "Respecting Mother",
+        "Respecting Father",
+        "Respecting Teacher",
+        "Respecting Guests",
+        "Respecting Divyangas",
+        "Respecting Elders/All",
+        "Respecting Self",
+      ],
+    },
+    {
+      title: "Respecting Nature",
+      items: ["Respect Soil", "Respect Rivers", "Respect Trees"],
+    },
+    {
+      title: "Pride Of Bharat",
+      items: [
+        "Respecting the Indian Army",
+        "Respecting Monuments/Religious Places",
+        "Patriotism",
+        "Pride in India: IKS",
+        "Rootedness/Respect culture festivals",
+      ],
+    },
   ];
-
-  const [openIndex, setOpenIndex] = useState(null);
-
-  // close modal on ESC
-  useEffect(() => {
-    function onKey(e) {
-      if (e.key === "Escape") setOpenIndex(null);
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
 
   return (
     <>
@@ -143,79 +137,76 @@ e)  Rootedness/Respect culture festivals`,
 
             <div className="intro-box">
               <p className="lead">
-                Prameya Shikshanam inculcates Values in children so as to guide them in their
-                complete personality development holistically. These values are taught to
-                children through stories which include Realistic Incidents, Creative Fictional
-                Stories, Stories from Epics of Ancient Bharat and also Living Examples of great
-                people who have excelled in various fields, etc., through interactive sessions,
-                which promote their emotional well-being. The main purpose of teaching these
-                values is to instil noble characteristics in children, which teaches them to respect
-                all and see divinity in all living beings and think of human beings as an integral
-                part of nature around them. These values will go with them beyond their school
-                years into adulthood.
-
-                The values taught in our illustrations are adopted from NCERT syllabi and
-                scriptures alike to create a blend of values which are ethical as well as
-                democratic. They are as follows:
+                Prameya Shikshanam inculcates Values in children so as to guide
+                them in their complete personality development holistically.
+                These values are taught to children through stories which include
+                Realistic Incidents, Creative Fictional Stories, Stories from
+                Epics of Ancient Bharat and also Living Examples of great people
+                who have excelled in various fields, etc., through interactive
+                sessions, which promote their emotional well-being. The main
+                purpose of teaching these values is to instil noble
+                characteristics in children, which teaches them to respect all
+                and see divinity in all living beings and think of human beings
+                as an integral part of nature around them. These values will go
+                with them beyond their school years into adulthood.
+                <br />
+                <br />
+                The values taught in our illustrations are adopted from NCERT
+                syllabi and scriptures alike to create a blend of values which
+                are ethical as well as democratic. They are as follows:
               </p>
             </div>
 
-            <div className="gallery-grid two-col" role="list" aria-label="Values gallery">
-              {images.map((src, idx) => (
-                <figure className="gallery-item" key={idx} role="listitem">
-                  <button
-                    className="gallery-button"
-                    onClick={() => setOpenIndex(idx)}
-                    aria-haspopup="dialog"
-                    aria-label={`Open info for value ${idx + 1}`}
-                  >
-                    <img src={src} alt={`Value ${idx + 1}`} loading="lazy" />
-                    
-                  </button>
-                </figure>
-              ))}
-            </div>
-            <br />
-            <br />
-            <p className="lead"><center><strong>Come join hands to create a peaceful and happy future with us.</strong></center></p>
+            <div
+              className="gallery-grid two-col"
+              role="list"
+              aria-label="Values gallery"
+            >
+              {images.map((src, idx) => {
+                const data = infoData[idx];
+                return (
+                  <figure className="gallery-item" key={idx} role="listitem">
+                    <button
+                      className="gallery-button"
+                      type="button"
+                      aria-label={`Values for ${data.title}`}
+                    >
+                      <img
+                        src={src}
+                        alt={data.title}
+                        loading="lazy"
+                      />
 
+                      {/* HOVER OVERLAY – DROPDOWN STYLE LIST ON TOP OF IMAGE */}
+                      <div className="gallery-hover-panel">
+                        <div className="gallery-hover-content">
+                          <h3 className="gallery-hover-title">
+                            {data.title}
+                          </h3>
+                          <ul className="gallery-hover-list">
+                            {data.items.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </button>
+                  </figure>
+                );
+              })}
+            </div>
+
+            <br />
+            <br />
+            <p className="lead">
+              <center>
+                <strong>
+                  Come join hands to create a peaceful and happy future with us.
+                </strong>
+              </center>
+            </p>
           </div>
         </section>
-
-        {/* <div className="final-message">
-          Come join hands to create a peaceful and happy future with us.
-        </div> */}
-
-        {/* Modal / Drawer for image info */}
-        {openIndex !== null && (
-          <div
-            className="info-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={`info-title-${openIndex}`}
-            onClick={(e) => {
-              if (e.target.classList.contains("info-modal")) setOpenIndex(null);
-            }}
-          >
-            <div className="info-panel" role="document">
-              <button
-                className="info-close"
-                aria-label="Close"
-                onClick={() => setOpenIndex(null)}
-              >
-                ×
-              </button>
-
-              {/* <h2 id={`info-title-${openIndex}`}>Value {openIndex + 1}</h2> */}
-
-              <div className="info-body">
-                {info[openIndex].split("\n").map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </main>
     </>
   );
