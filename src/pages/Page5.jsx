@@ -44,19 +44,17 @@ export default function Page5() {
 
               <h2 className="subhead">MAIN CONTRIBUTORS:</h2>
               <ol className="contributors about-list">
-                <li>Smt. Mrudula Vijayendra</li>
-                <li>Smt. Nagasri Raghavendra</li>
-                <li>Smt. K. Kamakshi</li>
+                <li>1. Smt. Mrudula Vijayendra</li>
+                <li>2. Smt. Nagasri Raghavendra</li>
+                <li>3. Smt. K. Kamakshi</li>
               </ol>
 
               <h2 className="subhead">ADVISORY BOARD:</h2>
               <ol className="advisory about-list">
-                <li>
-                  Sri. G.P.Nagaraja Acharya (Retd Professor, Dwaita Vedanta Dept,
+                <li>1. Sri. G.P.Nagaraja Acharya (Retd Professor, Dwaita Vedanta Dept,
                   Karnataka Sanskrit University).
                 </li>
-                <li>
-                  Dr. Vasanthalakshmi R (Bsc. MBA. PhD. Former General Manager and
+                <li>2. Dr. Vasanthalakshmi R (Bsc. MBA. PhD. Former General Manager and
                   a Principal Investigator for IKS Projects at Samvit Research Foundation,
                   Bangalore).
                 </li>

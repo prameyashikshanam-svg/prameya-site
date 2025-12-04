@@ -175,6 +175,9 @@ e)  Rootedness/Respect culture festivals`,
                 </figure>
               ))}
             </div>
+            <br />
+            <br />
+            <p className="lead"><center><strong>Come join hands to create a peaceful and happy future with us.</strong></center></p>
 
           </div>
         </section>
