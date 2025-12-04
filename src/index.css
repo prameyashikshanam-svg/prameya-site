@@ -1,0 +1,930 @@
+﻿:root{
+  --accent:#2563eb;
+  --muted:#556;
+  --bg:#fefcf7;
+  --card:#ffffff;
+  --card-border:#eceff4;
+  --radius:12px;
+  --pad:16px;
+  --max-width:auto;
+  --header-height:120px;
+  --left-width: 31%;
+  --right-width: 21%;
+  --frame-padding: 30px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{
+  height:100%;
+  background:var(--bg);
+  color:#0f172a;
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+.top-fixed-wrapper{
+  position:fixed;
+  top:0; left:0; width:100%;
+  z-index:1200;
+  background: linear-gradient(180deg,#ffffff,#fbfbff);
+  box-shadow: 0 6px 24px rgba(2,6,23,0.06);
+  backdrop-filter: blur(4px);
+}
+.site-header{
+  padding:20px 0;
+  border-bottom:1px solid var(--card-border);
+}
+.header-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 var(--pad);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:150px;
+}
+.brand-col{
+  display:flex;
+  flex-direction:column;
+  margin-left: 350px;
+}
+.brand-title{
+  font-family:"Playfair Display", Georgia, serif;
+  font-weight:700;
+  font-size:34px;
+  color:#d8741b;
+  text-transform:uppercase;
+  margin: 10px;
+}
+.brand-subtitle{
+  font-family:Inter,Arial,sans-serif;
+  font-size:12px;
+  color:#d8741b;
+  text-align: center;
+}
+.nav-col{
+  display:flex;
+  gap:15px;
+  margin-left:auto;
+  white-space: nowrap;   /* Prevent drops while scaling */
+}
+.nav-link{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:999px;
+  font-family:Inter,Arial,sans-serif;
+  font-weight:700;
+  font-size:13px;
+  color:#d8741b;
+  text-decoration:none;
+  background:rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(10,39,167,0.03);
+}
+.nav-link:hover{
+  transform:translateY(-4px);
+  box-shadow: 0 16px 40px rgba(2,6,23,0.08);
+}
+
+/* UNDER HEADER BAND */
+.below-header-band{
+  width:100%;
+  background: linear-gradient(90deg, rgba(12,20,40,0.06), rgba(12,20,40,0.01));
+}
+
+/* HERO SECTION */
+.page-root {
+  padding-top: calc(var(--header-height) + 10px);
+  height: 900px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
+.full-row{
+  width:150%;
+  height:100%;
+  display:flex;
+  padding: 2px;
+  background: transparent;
+}
+.full-row-inner{
+  width:100%;
+  max-width: var(--max-width);
+  margin:0 auto;
+  display:flex;
+  gap: 100px;
+  align-items: flex-start;
+  padding: 0 calc(10vw);
+}
+
+/* LEFT IMAGE */
+.left-area {
+  flex: 0 0 var(--left-width);
+  display:flex;
+  align-items:flex-start;
+  min-width:0;
+}
+.left-area .card-frame {
+  background:#ffffff;
+  padding:var(--frame-padding);
+  border-radius:16px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  border:1px solid var(--card-border);
+  width:100%; height:100%;
+  overflow:hidden;
+}
+.left-area .big-left-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+  transform:scale(1.05);
+}
+
+/* RIGHT IMAGE + TEXT */
+.right-area {
+  flex: 0 0 var(--right-width);
+  display:flex;
+  align-items:flex-start;
+  min-width:0;
+}
+.right-area .card-frame {
+  background:#ffffff;
+  padding:var(--frame-padding);
+  border-radius:16px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  border:1px solid var(--card-border);
+  width:100%; height:100%;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.right-area .small-right-img {
+  flex:0 0 65%;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+  transform:scale(1.05);
+}
+.right-area .right-text {
+  flex:1 1 35%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px 10px;
+  font-size:20px;
+  font-weight:500;
+  line-height:1.6;
+  color:#5b4a3a;
+}
+
+/* NOTE: mobile behavior below is "OPTION B" — forced visual parity:
+   we SCALE the header + hero on small screens instead of stacking.
+   This preserves the exact 24" composition (shrunk). */
+
+/* ensure transform origin and smoothness */
+.header-inner,
+.full-row-inner {
+  transform-origin: top center;
+  will-change: transform;
+  transition: transform 180ms ease-out;
+}
+
+/* 24-inch reference (no scaling) */
+@media (min-width:1600px){
+  .header-inner{ transform:none; gap:150px; }
+  .full-row-inner{ transform:none; }
+}
+
+/* Laptops 1366–1599 */
+@media (min-width:1366px) and (max-width:1599px){
+  .header-inner{ transform:scale(0.94); gap:120px; }
+  .brand-col{ margin-left:250px; }
+  .full-row-inner{ transform:scale(0.95); }
+}
+
+/* Medium laptops 1200–1365 */
+@media (min-width:1200px) and (max-width:1365px){
+  .header-inner{ transform:scale(0.88); gap:100px; }
+  .brand-col{ margin-left:200px; }
+  .full-row-inner{ transform:scale(0.88); }
+}
+
+/* Small laptops / large tablets 992–1199 */
+@media (min-width:992px) and (max-width:1199px){
+  .header-inner{ transform:scale(0.80); gap:80px; }
+  .brand-col{ margin-left:140px; }
+  .nav-link { padding:8px 10px; }
+  .full-row-inner{ transform:scale(0.80); }
+}
+
+/* Tablets 768–991 */
+@media (min-width:768px) and (max-width:991px){
+  .header-inner{ transform:scale(0.68); gap:60px; }
+  .brand-col{ margin-left:100px; }
+  .nav-link{ padding:7px 8px; font-size:12px; }
+  .full-row-inner{ transform:scale(0.68); }
+}
+
+/* Small screens and phones: FORCE scaled desktop composition (OPTION B) */
+/* scale progressively smaller to keep visual parity instead of stacking */
+@media (max-width:767px) and (min-width:480px) {
+  .header-inner{ transform:scale(0.52); gap:40px; }
+  .brand-col{ margin-left:40px; }
+  .full-row-inner{ transform:scale(0.52); }
+  /* allow vertical scrolling if scaled area exceeds viewport */
+  .page-root { overflow: auto; }
+}
+
+/* very small phones */
+@media (max-width:479px) {
+  .header-inner{ transform:scale(0.42); gap:30px; }
+  .brand-col{ margin-left:12px; }
+  .full-row-inner{ transform:scale(0.42); }
+  .page-root { overflow: auto; }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .header-inner, .full-row-inner{
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+/* =========================
+   Page2 / OBJECTIVE styles
+   ========================= */
+
+.center-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 20px;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height) - 40px);
+  background: transparent;
+}
+
+/* inner panel card */
+.panel-inner.card-light {
+  width: min(1100px, 95%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), #ffffff);
+  border: 1px solid rgba(236,239,244,0.9);
+  border-radius: 14px;
+  padding: 36px 40px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  box-sizing: border-box;
+}
+
+/* centered large heading */
+.panel-inner.card-light h1 {
+  margin: 0 0 18px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: #d8741b;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Justified paragraph block */
+.panel-inner.card-light .lead {
+  margin: 0 auto;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #24303a;
+
+  /* FULL JUSTIFICATION */
+  text-align: justify;
+
+  max-width: 200ch;
+  background: linear-gradient(180deg, #ffffff, #fbfbfb);
+  padding: 18px 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+  
+  white-space: pre-wrap; /* preserve your manual line breaks */
+  hyphens: auto;
+}
+
+/* Spacing for any nested <p> tags */
+.panel-inner.card-light .lead p {
+  margin: 8px 0;
+}
+
+/* Tablet scaling */
+@media (max-width: 900px) {
+  .panel-inner.card-light {
+    padding: 28px 20px;
+    width: 96%;
+  }
+  .panel-inner.card-light h1 {
+    font-size: 28px;
+  }
+  .panel-inner.card-light .lead {
+    font-size: 16px;
+    padding: 14px 16px;
+    max-width: 100%;
+    line-height: 1.7;
+  }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .panel-inner.card-light {
+    padding: 18px 12px;
+    border-radius: 10px;
+  }
+  .panel-inner.card-light h1 {
+    font-size: 22px;
+  }
+  .panel-inner.card-light .lead {
+    font-size: 15px;
+    padding: 12px;
+    line-height: 1.6;
+  }
+}
+
+
+/* =========================
+   Page3 / STRATEGY styles
+   Append to your main stylesheet
+   (Works with existing header and Page2 styles)
+   ========================= */
+
+/* reuse center-panel layout used on Page2; .alt allows subtle difference if needed */
+.center-panel.alt {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 20px;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height) - 40px);
+  background: transparent;
+}
+
+/* panel with slightly stronger contrast for list readability */
+.panel-inner.card-contrast {
+  width: min(1100px, 95%);
+  background: linear-gradient(180deg, #ffffff, #fffaf6);
+  border: 1px solid rgba(236,239,244,0.95);
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* heading centered */
+.panel-inner.card-contrast h1 {
+  margin: 0 0 22px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: #d8741b;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* list container: gap between items, no default list bullets */
+.program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* each list item: bordered card with left accent */
+.program-list li {
+  background: linear-gradient(180deg, #ffffff, #fbfbfb);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+  display: block;
+  box-sizing: border-box;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+/* hover subtle lift on wide screens */
+@media (hover: hover) and (pointer: fine) {
+  .program-list li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(2,6,23,0.06);
+  }
+}
+
+/* subheading (strong) styling — prominent and readable */
+.program-list li > strong {
+  display: block;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #2f2a25;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+/* paragraph inside each li — justified for tidy blocks */
+.program-list li > p {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #24303a;
+  text-align: justify;
+  hyphens: auto;
+  white-space: pre-wrap; /* preserve any intentional line breaks */
+}
+
+/* optional small meta spacing if multiple paragraphs */
+.program-list li p + p {
+  margin-top: 10px;
+}
+
+/* A visual accent bar on the left of each item (thin) */
+.program-list li::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), #d8741b);
+  border-radius: 4px;
+  float: left;
+  margin-right: 12px;
+  box-sizing: border-box;
+}
+
+/* ensure layout accounts for the left accent */
+.program-list li {
+  padding-left: 12px; /* keep space between accent and content */
+}
+
+/* On very wide screens make the list two-column for readability */
+@media (min-width: 1100px) {
+  .program-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+/* smaller screens: single column stacked and slightly larger text for touch readability */
+@media (max-width: 900px) {
+  .panel-inner.card-contrast {
+    padding: 20px 18px;
+    width: 96%;
+  }
+  .panel-inner.card-contrast h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .program-list li {
+    padding: 14px 14px;
+  }
+  .program-list li > strong {
+    font-size: 16px;
+  }
+  .program-list li > p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* very small phones: keep spacing comfortable */
+@media (max-width: 420px) {
+  .panel-inner.card-contrast {
+    padding: 14px 12px;
+    border-radius: 10px;
+  }
+  .panel-inner.card-contrast h1 {
+    font-size: 22px;
+  }
+  .program-list li {
+    padding: 12px 10px;
+  }
+  .program-list li > strong {
+    font-size: 15px;
+  }
+  .program-list li > p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* =========================
+   Page4 / TREASURE BASKET OF VALUES
+   REPLACE existing Page4 styles with this block
+   (No internal scrolling; page scrolls naturally)
+   ========================= */
+
+/* Make the page-root allow normal page scrolling (do NOT clip content) */
+.page-root {
+  padding-top: calc(var(--header-height) + 10px);
+  height: auto;            /* allow page to grow with content */
+  min-height: calc(100vh - var(--header-height) - 10px);
+  box-sizing: border-box;
+  display: block;
+  overflow: visible;       /* page-level scrolling, not internal */
+}
+
+/* gallery panel container — part of page flow */
+.gallery-panel {
+  padding: 56px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+}
+
+/* inner wrapper — wider so cards appear larger */
+.gallery-inner {
+  width: min(1320px, 96%);
+  margin: 0 auto;
+  box-sizing: border-box;
+   background: linear-gradient(180deg, #ffffff, #fffdf9);
+  border: 1px solid rgba(236,239,244,0.95);
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.04);
+  font-family: Inter, Arial, sans-serif;
+}
+
+/* main heading */
+.gallery-inner h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 34px;
+  color: #d8741b;
+  text-align: center;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* intro box beneath heading */
+.gallery-inner .intro-box {
+  max-width: 1200px;
+  margin: 0 auto 26px auto;
+}
+.gallery-inner .intro-box .lead {
+  background: linear-gradient(180deg, #ffffff, #fffdf9);
+  border: 1px solid rgba(236,239,244,0.95);
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.04);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #24303a;
+  text-align: justify;
+  hyphens: auto;
+  white-space: pre-wrap;
+}
+
+/* grid: two columns on wide screens — wider gaps for breathing room */
+/* ===== REPLACE this block (gallery grid) ===== */
+.gallery-grid.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 22px;
+ 
+  margin-left: 100px;
+  align-content: start;
+  height: auto;            /* allow grid to grow with content (was height:10px) */
+}
+
+/* ===== REPLACE this block (gallery item) ===== */
+.gallery-item {
+  margin: 0;
+  list-style: none;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* clickable area for image (button allows keyboard focus) — bigger white frame */
+.gallery-button img {
+  display: block;
+  width: 100%;
+  height: auto;           /* important — let image determine its height */
+  max-height: 420px;      /* cap so very tall images don't blow up layout; tweak if needed */
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+/* focus + hover */
+.gallery-button:focus {
+  outline: 3px solid rgba(37,99,235,0.16);
+  outline-offset: 4px;
+}
+.gallery-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 64px rgba(2,6,23,0.10);
+}
+
+/* image inside — larger, generous height but responsive */
+.gallery-button img {
+  display: block;
+  width: 100%;
+  height: auto;           /* allow natural height */
+  max-height: 420px;      /* larger cap -> wider visual */
+  object-fit: cover;
+  vertical-align: middle;
+  border-radius: 6px;     /* small inner rounding so frame shows */
+}
+
+/* numbered badge — slightly bigger */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(216,116,27,0.95);
+  color: #fff;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 15px;
+  box-shadow: 0 8px 18px rgba(2,6,23,0.2);
+}
+
+/* caption (optional) */
+.gallery-item .caption {
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #24303a;
+  text-align: center;
+}
+
+/* final message style (if used) */
+.final-message {
+  max-width: 1200px;
+  margin: 36px auto;
+  text-align: center;
+  font-family: Inter, Arial, sans-serif;
+  color: #24303a;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* ===================
+   Info modal (drawer) styles (unchanged)
+   =================== */
+
+.info-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3,6,20,0.5);
+  z-index: 2200;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.info-panel {
+  width: min(980px, 96%);
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 60px rgba(2,6,23,0.3);
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid rgba(236,239,244,0.95);
+}
+
+.info-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+  padding: 6px 10px;
+}
+.info-close:hover { color: #000; }
+
+.info-panel h2 {
+  margin: 0 0 12px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #d8741b;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.info-body {
+  font-family: Inter, Arial, sans-serif;
+  color: #24303a;
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+.info-body p { margin: 8px 0; text-align: left; }
+
+/* responsive behavior: larger visual on desktop, single column on small screens */
+@media (max-width: 1100px) {
+  .gallery-inner { width: min(980px, 96%); }
+  .gallery-grid.two-col { gap: 20px; }
+  .gallery-button img { max-height: 380px; }
+}
+
+@media (max-width: 900px) {
+  .gallery-grid.two-col { grid-template-columns: 1fr; gap: 16px; }
+  .gallery-button img { max-height: 420px; }
+  .gallery-inner .intro-box .lead { font-size: 15px; line-height: 1.6; }
+  .gallery-inner h1 { font-size: 28px; }
+}
+
+@media (max-width: 420px) {
+  .gallery-button img { max-height: 260px; }
+  .gallery-inner .intro-box .lead { font-size: 15px; line-height: 1.5; }
+  .info-panel h2 { font-size: 18px; }
+  .info-body { font-size: 15px; }
+}
+
+
+/* =========================
+   Page5 / ABOUT US styles
+   Add to your main stylesheet (index.css)
+   ========================= */
+
+/* reuse center-panel layout; about specific tweaks */
+.about-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 20px;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height) - 40px);
+  background: transparent;
+}
+
+/* inner panel: consistent with other pages but tuned for readable long text */
+.about-inner {
+  width: min(1100px, 95%);
+  background: linear-gradient(180deg,#ffffff,#fffaf6);
+  border: 1px solid rgba(236,239,244,0.95);
+  border-radius: 14px;
+  padding: 34px 40px;
+  box-shadow: 0 12px 32px rgba(2,6,23,0.06);
+  box-sizing: border-box;
+  color: #24303a;
+}
+
+/* page title (centered) */
+.about-inner h1 {
+  margin: 0 0 18px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: #d8741b;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* short intro lead paragraph */
+.about-section .lead {
+  margin: 0 auto 18px auto;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #21303a;
+  text-align: justify;
+  max-width: 100%;
+  background: linear-gradient(180deg,#ffffff,#fbfbfb);
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+  white-space: pre-wrap;
+}
+
+/* small summary bullets row */
+.about-summary {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0 22px 0;
+  justify-content: center;
+}
+.about-summary .summary-item {
+  font-weight: 700;
+  color: #5b4a3a;
+  background: rgba(255,255,255,0.8);
+  padding: 8px 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(236,239,244,0.9);
+  box-shadow: 0 6px 14px rgba(2,6,23,0.03);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* section subheads */
+.subhead {
+  margin: 18px 0 10px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  color: #d8741b;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* paragraph body */
+.body-text {
+  margin: 0 0 12px 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #24303a;
+  text-align: justify;
+  hyphens: auto;
+  white-space: pre-wrap;
+  background: linear-gradient(180deg,#ffffff,#fffdf9);
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+}
+
+/* contributors & advisory lists */
+.about-list {
+  margin: 0 0 12px 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #24303a;
+  text-align: justify;
+  hyphens: auto;
+  white-space: pre-wrap;
+  background: linear-gradient(180deg,#ffffff,#fffdf9);
+  padding: 14px 16px;
+
+  /* ⭐ NEW — extra space before list numbers */
+  padding-left: 28px;
+
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+}
+
+
+/* contact block */
+.contact-block {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px dashed rgba(216,116,27,0.22);
+  background: linear-gradient(180deg,#fffdf8,#ffffff);
+  box-shadow: 0 6px 14px rgba(2,6,23,0.02);
+}
+.contact-line {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  color: #24303a;
+}
+.contact-line a {
+  color: #d8741b;
+  text-decoration: none;
+  font-weight: 700;
+}
+.contact-line a:hover { text-decoration: underline; }
+
+/* small screens */
+@media (max-width: 900px) {
+  .about-inner {
+    padding: 22px;
+    width: 96%;
+  }
+  .about-inner h1 { font-size: 28px; }
+  .subhead { font-size: 18px; }
+  .body-text, .about-list, .about-summary .summary-item {
+    font-size: 15px;
+  }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .about-inner { padding: 16px; border-radius: 10px; }
+  .about-inner h1 { font-size: 22px; }
+  .body-text, .about-list { font-size: 14px; line-height: 1.6; padding: 12px; }
+  .about-summary { gap: 8px; }
+  .about-summary .summary-item { padding: 6px 10px; font-size: 12px; }
+}
