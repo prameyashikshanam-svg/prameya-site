@@ -13,7 +13,7 @@ export default function Page5() {
             <div className="about-section">
               <p className="lead">
                 Prameya Shikshanam is a non-profit organisation for promoting eternal, moral
-                &amp; democratic values based in Bengaluru, Karnataka, India.
+                &amp; democratic values to students.We are based in Bengaluru, Karnataka, India.
               </p>
 {/* 
               <div className="about-summary">
