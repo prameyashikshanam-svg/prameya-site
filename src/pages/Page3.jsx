@@ -21,14 +21,14 @@ various levels. </p>
                 <strong>For Teachers</strong>
                 <p>Teachers are trained through workshops to inculcate the knowledge through
 Prameya Shikshanam and will be provided with pedagogy to effectively execute
-the illustrations for students. 
+the illustrations for students.
  </p>
               </li>
               <li>
                 <strong>For Parents</strong>
                 <p>Prameya Shikshanam also aims to conduct workshops for parents at the
 beginning of the year, to help children imbibe the values shared through
-illustrations in schools and in the home environment.. </p>
+illustrations in schools and  and adapt them in the home environment  also. </p>
               </li>
               <li>
                 <strong>Through Digital Platforms</strong>
