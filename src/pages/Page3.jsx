@@ -28,7 +28,7 @@ the illustrations for students.
                 <strong>For Parents</strong>
                 <p>Prameya Shikshanam also aims to conduct workshops for parents at the
 beginning of the year, to help children imbibe the values shared through
-illustrations in schools and  and adapt them in the home environment  also. </p>
+illustrations in schools and adapt them in the home environment  also. </p>
               </li>
               <li>
                 <strong>Through Digital Platforms</strong>
